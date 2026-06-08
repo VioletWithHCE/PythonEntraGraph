@@ -3,5 +3,8 @@
 .env
 __pycache__/
 *.pyc
-entratest1/
-
+bin/
+lib/
+lib64/
+pyvenv.cfg
+include/
