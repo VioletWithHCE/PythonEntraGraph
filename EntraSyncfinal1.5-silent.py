@@ -20,6 +20,7 @@ import asyncio
 import json
 import logging
 import os
+import shutil
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -807,7 +808,10 @@ def sync_distribution_groups(conn):
     cursor.close()
     sweep_deleted(conn, "distribution_groups",        group_ids,  label_col="primary_smtp_address")
     sweep_deleted(conn, "distribution_group_members", member_ids, label_col="distribution_group_email")
-
+    try:
+        shutil.rmtree(output_dir)
+    except Exception as e:
+        logging.warning(f"Could not delete EXO output dir {output_dir}: {e}")
 
 async def main():
     try:
