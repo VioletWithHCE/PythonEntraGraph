@@ -1,0 +1,2 @@
+pwsh -Command "Install-Module ExchangeOnlineManagement -Scope CurrentUser -Force"
+ alt app id needs to have the exchange admin role
